@@ -64,14 +64,14 @@ for i in range(0, len(image_files) - 3, 3):
         at1_df = pd.DataFrame([at1], columns=["X (mm)", "Y (mm)", "Z (mm)", "Roll (deg)", "Pitch (deg)", "Yaw (deg)"])
         at2_df = pd.DataFrame([at2], columns=["X (mm)", "Y (mm)", "Z (mm)", "Roll (deg)", "Pitch (deg)", "Yaw (deg)"])
 
-        at1_df.to_csv(os.path.join(output_folder, 'at1', f'{img_file_t1}.csv'), index=False)
-        at2_df.to_csv(os.path.join(output_folder, 'at2', f'{img_file_t2}.csv'), index=False)
+        at1_df.to_csv(os.path.join(output_folder, 'at1', f'{os.path.splitext(img_file_t1)[0]}.csv'), index=False)
+        at2_df.to_csv(os.path.join(output_folder, 'at2', f'{os.path.splitext(img_file_t2)[0]}.csv'), index=False)
 
         # 計算 at1 -> at2（相對變化）
         at1_to_at2 = [at2[i] - at1[i] for i in range(3)] + [at2[i] - at1[i] for i in range(3, 6)]
 
         # 存儲 at1 -> at2 為 CSV 格式
         at1_to_at2_df = pd.DataFrame([at1_to_at2], columns=["X Change (mm)", "Y Change (mm)", "Z Change (mm)", "Roll Change (deg)", "Pitch Change (deg)", "Yaw Change (deg)"])
-        at1_to_at2_df.to_csv(os.path.join(output_folder, 'at1_to_at2', f'{img_file_t1}_to_{img_file_t2}.csv'), index=False)
+        at1_to_at2_df.to_csv(os.path.join(output_folder, 'at1_to_at2', f'{os.path.splitext(img_file_t1)[0]}_to_{os.path.splitext(img_file_t2)[0]}.csv'), index=False)
 
 print("資料處理完成，已生成對應的資料夾和 CSV 檔案。")
