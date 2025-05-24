@@ -5,14 +5,14 @@ from PIL import Image
 
 # 設定資料來源資料夾
 base_input_folder = '.'  # 搜尋當前目錄下所有符合條件的資料夾
-base_output_folder = 'process_data'  # 統一輸出資料夾
+base_output_folder = 'process_data_0524'  # 統一輸出資料夾
 os.makedirs(base_output_folder, exist_ok=True)
 
 # 找出所有符合 frames_XXXX_XX 命名規則的資料夾
 for folder_name in os.listdir(base_input_folder):
     if folder_name.startswith('frames_') and os.path.isdir(folder_name):
         suffix = folder_name.replace('frames_', '')
-        csv_file = f'{folder_name}_final_data.csv'
+        csv_file = f'{suffix}_final_data.csv'
         image_folder = folder_name
         output_folder = os.path.join(base_output_folder, f'data_{suffix}')
         output_json_path = os.path.join(output_folder, 'transitions_dataset.json')
