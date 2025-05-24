@@ -50,7 +50,7 @@ for folder_name in os.listdir(base_input_folder):
         data_entries = []
 
         # 處理資料
-        for i in range(0, len(image_files) - 3, 3):
+        for i in range(0, len(image_files) - 3, 1):
             img_file_t1 = image_files[i]
             img_file_t2 = image_files[i + 3]
 
